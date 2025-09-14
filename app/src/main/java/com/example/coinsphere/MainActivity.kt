@@ -18,6 +18,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.Divider
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -63,6 +64,13 @@ data class Cards(
     val descripcion: String
 )
 
+data class Criptos(
+    val id: Int,
+    val imagen: String,
+    val titulo: String,
+    val valor: String
+)
+
 
 @Composable
 fun HomeScreen(
@@ -76,10 +84,23 @@ fun HomeScreen(
 
     )
 
+    val criptomonedas = listOf(
+        Criptos(1, "bitcoin.png", "Bitcoin", "$109,797.37"),
+        Criptos(2, "ethereum.png", "Ethereum", "$4,321.21"),
+        Criptos(3, "tether.png", "Tether", "$1.0000"),
+        Criptos(4, "xrp.png", "XRP", "$2.8100"),
+        Criptos(5, "bnb.png", "BNB", "$845.0000"),
+        Criptos(6, "solana.png", "Solana", "$201.8500"),
+        Criptos(7, "usdc.png", "USDC", "$0.9998"),
+        Criptos(8, "dogecoin.png", "Dogecoin", "$0.1320"),
+        Criptos(9, "tron.png", "TRON", "$0.3630")
+    )
+
     Column(
         modifier = Modifier
             .fillMaxSize()
             .background(Background)
+            .padding(top = 25.dp)
     ){
         Text(
             modifier = Modifier
@@ -87,7 +108,7 @@ fun HomeScreen(
                 .padding(15.dp),
             text = "CoinSphere",
             fontWeight = FontWeight.Bold,
-            fontSize = 24.sp,
+            fontSize = 20.sp,
             color = TextMain
         )
 
@@ -138,8 +159,33 @@ fun HomeScreen(
                 }
 
             }
-
         }
+
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(10.dp)
+
+        ){
+            Text(
+                text = "#     Name",
+                color = TextDim
+            )
+
+            Text(
+                modifier = Modifier
+                    .padding(start = 150.dp),
+                text = "Price",
+                color = TextDim
+            )
+        }
+
+        Divider(
+            color = Surface,
+            thickness = 3.dp
+        )
+
+
     }
 }
 @Preview
