@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
@@ -40,6 +41,8 @@ import com.example.coinsphere.ui.theme.PurpleGrey40
 import com.example.coinsphere.ui.theme.Surface
 import com.example.coinsphere.ui.theme.TextDim
 import com.example.coinsphere.ui.theme.TextMain
+import coil.compose.AsyncImage
+
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -87,15 +90,16 @@ fun HomeScreen(
     )
 
     val criptomonedas = listOf(
-        Criptos(1, "bitcoin.png", "Bitcoin", "$109,797.37"),
-        Criptos(2, "ethereum.png", "Ethereum", "$4,321.21"),
-        Criptos(3, "tether.png", "Tether", "$1.0000"),
-        Criptos(4, "xrp.png", "XRP", "$2.8100"),
-        Criptos(5, "bnb.png", "BNB", "$845.0000"),
-        Criptos(6, "solana.png", "Solana", "$201.8500"),
-        Criptos(7, "usdc.png", "USDC", "$0.9998"),
-        Criptos(8, "dogecoin.png", "Dogecoin", "$0.1320"),
-        Criptos(9, "tron.png", "TRON", "$0.3630")
+        Criptos(1, "https://1000logos.net/wp-content/uploads/2018/05/Bitcoin-Logo.png", "Bitcoin", "$109,797.37"),
+        Criptos(2, "https://download.logo.wine/logo/Ethereum/Ethereum-Logo.wine.png", "Ethereum", "$4,321.21"),
+        Criptos(3, "https://cdn-icons-png.flaticon.com/512/825/825508.png", "Tether", "$1.0000"),
+        Criptos(4, "https://cdn-icons-png.flaticon.com/512/12114/12114256.png", "XRP", "$2.8100"),
+        Criptos(5, "https://assets.streamlinehq.com/image/private/w_300,h_300,ar_1/f_auto/v1/icons/vectors/bnb-2c9adc7qw85po528q8y3b.png/bnb-tss7lyzvhxyjfc9ivae0l.png?_a=DATAg1AAZAA0", "BNB", "$845.0000"),
+        Criptos(6, "https://cdn.iconscout.com/icon/premium/png-256-thumb/solana-sol-icon-svg-png-download-5795323.png", "Solana", "$201.8500"),
+        Criptos(7, "https://cdn-icons-png.flaticon.com/512/14446/14446285.png", "USDC", "$0.9998"),
+        Criptos(8, "https://www.shareicon.net/data/512x512/2015/09/14/101012_doge_512x512.png", "Dogecoin", "$0.1320"),
+        Criptos(9, "https://s2.coinmarketcap.com/static/img/coins/200x200/1958.png", "TRON", "$0.3630"),
+        Criptos(10, "https://images.icon-icons.com/4044/PNG/512/avalanche_crypto_coin_icon_256894.png", "Avalanche", "$32.45")
     )
 
     Column(
@@ -220,21 +224,20 @@ fun HomeScreen(
                             ){
                                 Text(
                                     modifier = Modifier
-                                        .padding(end = 10.dp),
+                                        .padding(end = 20.dp),
                                     text = criptos.id.toString(),
                                     color = TextDim
                                 )
 
-                                Text(
-                                    modifier = Modifier
-                                        .padding(end = 10.dp),
-                                    text = "img",
-                                    color = Color.White
+                                AsyncImage(
+                                    model = criptos.imagen,
+                                    contentDescription = criptos.titulo,
+                                    modifier = Modifier.size(40.dp)
                                 )
 
                                 Text(
                                     modifier = Modifier
-                                        .padding(end = 40.dp),
+                                        .padding(start = 20.dp),
                                     text = criptos.titulo,
                                     fontWeight = FontWeight.Bold,
                                     color = TextMain
