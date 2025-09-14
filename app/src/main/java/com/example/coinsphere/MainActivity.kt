@@ -8,10 +8,12 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
@@ -184,6 +186,81 @@ fun HomeScreen(
             color = Surface,
             thickness = 3.dp
         )
+
+        LazyColumn(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(15.dp),
+            verticalArrangement = Arrangement.spacedBy(10.dp)
+        ) {
+            items(criptomonedas) { criptos ->
+                Card(
+                    modifier = Modifier
+                    .fillMaxWidth()
+                    .height(60.dp),
+                    colors = CardDefaults.cardColors(
+                        containerColor = Surface
+                    ),
+                    shape = RoundedCornerShape(16.dp)
+                ){
+
+                    Row(
+                        modifier = Modifier
+                            .fillMaxSize()
+                    ){
+                        Column(
+                            modifier = Modifier
+                                .width(210.dp)
+                        ){
+                            Row(
+                                modifier = Modifier
+                                    .fillMaxHeight()
+                                    .padding(10.dp),
+                                verticalAlignment = Alignment.CenterVertically
+                            ){
+                                Text(
+                                    modifier = Modifier
+                                        .padding(end = 10.dp),
+                                    text = criptos.id.toString(),
+                                    color = TextDim
+                                )
+
+                                Text(
+                                    modifier = Modifier
+                                        .padding(end = 10.dp),
+                                    text = "img",
+                                    color = Color.White
+                                )
+
+                                Text(
+                                    modifier = Modifier
+                                        .padding(end = 40.dp),
+                                    text = criptos.titulo,
+                                    fontWeight = FontWeight.Bold,
+                                    color = TextMain
+                                )
+                            }
+                        }
+
+                        Row(
+                            modifier = Modifier
+                                .fillMaxHeight()
+                                .padding(10.dp),
+                            verticalAlignment = Alignment.CenterVertically
+                        ){
+                            Text(
+                                text = criptos.valor,
+                                color = TextDim
+                            )
+                        }
+                    }
+
+
+
+
+                }
+            }
+        }
 
 
     }
